@@ -6,7 +6,7 @@
 	<string>nop</string>
 	<key>command</key>
 	<string>#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby
-begin 
+begin
   require 'rubygems'
   require 'redcloth'
 rescue LoadError
@@ -20,10 +20,9 @@ $stdin.each_line { |line| contents &lt;&lt; line }
 
 output = RedCloth.new(contents.join()).to_html(:textile)
 
-TextMate::HTMLOutput.show(:title =&gt; "Textile Preview", :sub_title =&gt; ENV['TM_FILENAME']) do |io|
+TextMate::HTMLOutput.show(:title =&gt; "Preview “#{ENV['TM_DISPLAYNAME']}”", :sub_title =&gt; "RedCloth #{RedCloth::VERSION}") do |io|
   io &lt;&lt; output
- end
-
+end
 </string>
 	<key>input</key>
 	<string>document</string>
